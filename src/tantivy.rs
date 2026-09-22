@@ -55,7 +55,7 @@ impl Tan {
         }
         let schema = Self::schema();
         let index = tantivy::Index::open_or_create(MmapDirectory::open(path).unwrap(), schema)?;
-        let stop_words = stop_words::get(stop_words::LANGUAGE::Chinese);
+        let stop_words = stop_words::get(stop_words::Language::Chinese);
         let custom_stop_words = include_str!("../stopwords.txt");
         let mut custom_stop_words: HashSet<String> = custom_stop_words
             .split_whitespace()
