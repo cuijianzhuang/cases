@@ -23,7 +23,7 @@ fn unzip(path: &str) {
     let jieba = Jieba::new();
     let mut meta_count = HashMap::new();
     let mut fulltext_count = HashMap::new();
-    let stop_words = stop_words::get(stop_words::LANGUAGE::Chinese);
+    let stop_words = stop_words::get(stop_words::Language::Chinese);
     let custom_stop_words = read_to_string("stopwords.txt").unwrap();
     let mut custom_stop_words: HashSet<String> = custom_stop_words
         .split_whitespace()

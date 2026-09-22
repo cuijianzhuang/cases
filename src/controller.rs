@@ -21,7 +21,7 @@ use tracing::info;
 use std::sync::Mutex;
 
 #[cfg(feature = "vsearch")]
-use fastembed::{EmbeddingModel, InitOptions, TextEmbedding};
+use fastembed::{EmbeddingModel, TextEmbedding, TextInitOptions};
 
 #[cfg(feature = "vsearch")]
 use qdrant_client::{
@@ -135,7 +135,8 @@ static MODEL: LazyLock<Mutex<TextEmbedding>> = LazyLock::new(|| {
         _ => EmbeddingModel::BGESmallZHV15,
     };
     let model =
-        TextEmbedding::try_new(InitOptions::new(modle).with_show_download_progress(true)).unwrap();
+        TextEmbedding::try_new(TextInitOptions::new(modle).with_show_download_progress(true))
+            .unwrap();
     Mutex::new(model)
 });
 
